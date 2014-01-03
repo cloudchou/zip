@@ -56,6 +56,9 @@ extern int errno;
 int rename OF((ZCONST char *, ZCONST char *));
 #endif
 
+#ifdef ANDROID
+int wctomb(char *s, wchar_t wc) { return wcrtomb(s,wc,NULL); }
+#endif
 
 /* Local functions */
 local int optionerr OF((char *, ZCONST char *, int, int));
